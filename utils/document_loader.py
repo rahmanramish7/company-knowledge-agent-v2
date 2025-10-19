@@ -2,7 +2,10 @@ import os
 import pandas as pd
 from PyPDF2 import PdfReader
 # FIXED: Use correct import path
-from langchain_core.documents import Document
+try:
+    from langchain.schema import Document
+except ImportError:
+    from langchain_core.documents import Document
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from typing import List
 import streamlit as st

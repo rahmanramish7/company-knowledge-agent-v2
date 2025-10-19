@@ -1,6 +1,10 @@
 import chromadb
 # FIXED: Use correct import path
-from langchain_core.documents import Document
+# Try this import instead  
+try:
+    from langchain.schema import Document
+except ImportError:
+    from langchain_core.documents import Document
 from config import Config
 import streamlit as st
 

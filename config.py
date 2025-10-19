@@ -1,9 +1,8 @@
 import os
-import streamlit as st
 
 class Config:
-    # Groq API - EMPTY for GitHub
-    GROQ_API_KEY = ""  # ← MUST BE EMPTY STRING
+    # Groq API - Use Streamlit secrets
+    GROQ_API_KEY = os.getenv("GROQ_API_KEY", "")  # Simple approach for Streamlit Cloud
     GROQ_MODEL = "llama-3.1-8b-instant"
     
     # Vector Database
