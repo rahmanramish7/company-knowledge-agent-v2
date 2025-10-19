@@ -1,14 +1,13 @@
 import chromadb
-from langchain.schema import Document
+# FIXED: Use correct import path
+from langchain_core.documents import Document
 from config import Config
 import streamlit as st
 
 class VectorStoreManager:
     def __init__(self):
-        # Use simple persistent client
         self.client = chromadb.PersistentClient(path=Config.VECTOR_DB_PATH)
         self.collection_name = "company_docs"
-    
     def create_vector_store(self, documents: list, collection_name: str = "company_docs"):
         try:
             from utils.document_loader import DocumentProcessor

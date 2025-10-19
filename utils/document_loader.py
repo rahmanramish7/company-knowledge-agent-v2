@@ -1,7 +1,8 @@
 import os
 import pandas as pd
 from PyPDF2 import PdfReader
-from langchain.schema import Document
+# FIXED: Use correct import path
+from langchain_core.documents import Document
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from typing import List
 import streamlit as st
@@ -9,14 +10,14 @@ import uuid
 
 class DocumentProcessor:
     def __init__(self):
-        # Enhanced chunking for better retrieval
         self.text_splitter = RecursiveCharacterTextSplitter(
-            chunk_size=800,  # Smaller chunks for better precision
-            chunk_overlap=150,  # More overlap for context
-            length_function=len,
+            chunk_size=1000,
+            chunk_overlap=200,
+            length_function=len
             separators=["\n\n", "\n", ". ", "! ", "? ", " ", ""]
         )
-    
+           
+        
     def load_pdf(self, file_path: str) -> List[Document]:
         try:
             reader = PdfReader(file_path)
