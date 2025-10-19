@@ -1,11 +1,18 @@
-import streamlit as st
+import sys
 import os
-from groq import Groq
-from config import Config
+import streamlit as st
+
+# Add the current directory to Python path for Streamlit Cloud
+sys.path.append(os.path.dirname(os.path.abspath(__file__)))
+
+# Now import your modules
 from utils.document_loader import DocumentProcessor
 from utils.vector_store import VectorStoreManager
 from utils.auth import Authentication, AuditLogger
+from config import Config
+from groq import Groq
 import time
+
 
 # Page configuration
 st.set_page_config(
